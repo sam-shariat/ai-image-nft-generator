@@ -20,7 +20,11 @@ export const SOCIAL_GITHUB = 'sam-shariat'
 
 export const ETH_CHAINS = [polygon, arbitrum, optimism, goerli, sepolia, polygonMumbai]
 
-export const OPENSEA_ASSET_URL = {
+interface OPENSEA_ASSET_URLs {
+  [index: number]: string;
+}
+
+export const OPENSEA_ASSET_URL:OPENSEA_ASSET_URLs = {
   5: 'https://testnets.opensea.io/assets/goerli',
   80001: 'https://testnets.opensea.io/assets/mumbai',
   137: 'https://opensea.io/assets/matic',

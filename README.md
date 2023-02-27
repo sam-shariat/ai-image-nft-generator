@@ -12,6 +12,7 @@ Solidity Smart Contracts [Contracts Pages](./contracts)
 
 ## Features ✅
 
+- [Nexth](https://github.com/wslyvh/nexth)
 - [Next.js](https://nextjs.org/docs)
 - [Chakra UI](https://chakra-ui.com/)
 - [ethers.js](https://docs.ethers.org/)

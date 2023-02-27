@@ -69,6 +69,7 @@ export function Mint(props: Props) {
       console.log('connect wallet')
       return
     }
+    if(!chain) return
     const contract = new ethers.Contract(contractAddress[chain?.id], contractAbi, signer)
     setMintStatus('MINTING')
     try {
@@ -114,7 +115,7 @@ export function Mint(props: Props) {
           />
           <ModalBody display={'flex'} flexDirection="column" gap={2}>
             <Button
-              isDisabled={Boolean(ipfsHash?.length > 0)}
+              isDisabled={Boolean(ipfsHash && ipfsHash?.length > 0)}
               isLoading={ipfsLoading}
               onClick={uploadToIPFS}
               colorScheme="teal">

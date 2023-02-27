@@ -1,4 +1,8 @@
-export const contractAddress = {
+interface contractAddresses {
+  [index: number]: string;
+}
+
+export const contractAddress : contractAddresses= {
   5: '0x28412c8e7692926a7c85383ef5e375b709ec93eb',
   80001: '0x4e13a0d70014a955e46707c58c288ee9d8130336',
   137: '0xacc9fab013c683b571c64fba21f9cc255fd46239',

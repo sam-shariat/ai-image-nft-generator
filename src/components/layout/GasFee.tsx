@@ -46,7 +46,7 @@ export function GasFee(props: Props) {
           <ModalCloseButton />
           <ModalBody>
             <Flex fontWeight={'bold'} alignItems={'center'} gap={2} p={4}><FaMotorcycle size={'25px'} />Minimum Fee<Spacer/>{gasPrice} GWEI</Flex>
-            <Flex fontWeight={'bold'} alignItems={'center'} gap={2} p={4} borderTop={'solid 1px #cccccc30'} size={'25px'}><FaSpaceShuttle />Fast<Spacer/>{fastGasPrice} GWEI</Flex>
+            <Flex fontWeight={'bold'} alignItems={'center'} gap={2} p={4} borderTop={'solid 1px #cccccc30'}><FaSpaceShuttle size={'25px'}/>Fast<Spacer/>{fastGasPrice} GWEI</Flex>
           </ModalBody>
           <ModalFooter>
             <LinkComponent href="https://www.bitcoin.com/get-started/what-is-ETH-gas-and-how-do-fees-work-in-ethereum/">
