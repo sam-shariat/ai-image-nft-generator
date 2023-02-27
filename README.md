@@ -1,12 +1,14 @@
-# Nexth
+# AI NFT GENERATOR
 
-A Next.js + Ethereum starter kit to quickly ship Web3 Apps ⚡
+A Next.js + Ethereum DApp That Generates Images Using OpenAI, Can Upload The Image To IPFS and Mints It to the Blockchain (Currently Working On Polygon, Arbitrum, Optimism, Goerli Testnet, Sepolia Testnet) ⚡
 
-![Nexth Readme Image](./readme.png)
+![Screen](./screen.jpg)
+
+### [Live Demo](https://sam-shariat.github.io/ai-image-nft-generator/)
 
 ## Getting Started 👀
 
-Check-out the [example pages](./src/pages/examples/) or [live demo](https://nexth.vercel.app/) to see how you can use this starter kit.
+Solidity Smart Contracts [Contracts Pages](./contracts)
 
 ## Features ✅
 
