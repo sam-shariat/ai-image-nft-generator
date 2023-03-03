@@ -3,7 +3,6 @@ import { State } from 'types'
 import axios from 'axios'
 const axiosRetry = require('axios-retry')
 const FormData = require('form-data')
-const JWT = `Bearer ${process.env.NEXT_PUBLIC_PINATA_JWT}`
 
 export function useUploadToIpfs(url: string, text: string | undefined) {
   const [state, setState] = useState<State<string>>({

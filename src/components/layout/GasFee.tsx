@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Box,
   Button,
   Flex,
   Modal,
@@ -18,26 +17,42 @@ import { FaGasPump, FaMotorcycle, FaSpaceShuttle } from 'react-icons/fa'
 import { useFeeData, useNetwork } from 'wagmi'
 import { LinkComponent } from './LinkComponent'
 
-interface Props {
-  className?: string
-}
 
-export function GasFee(props: Props) {
-  const className = props.className ?? ''
+/**
+ * @notice GasFee component is aReact component that displays a Gas Fee.
+ * It uses the useNetwork() and useFeeData() hooks to retrieve data about the current chain and fee data, respectively.
+ * The gasPrice and fastGasPrice variables are calculated from the data retrieved from useFeeData().
+ * The component displays a button with an icon and the gas price, which when clicked opens a modal containing more details about the gas fee.
+ * The modal contains two Flex components displaying the minimum fee and fast fee, respectively.
+ * There is also a button with a link to more details about ETH gas fees.
+ *
+ * @returns {JSX.Element} - A Button with an Icon And a Text showing gasPrice, which when clicked opens a modal containing more details about the gas fee.
+ */
+
+export function GasFee() {
   const { chain } = useNetwork()
-  const { data } = useFeeData({chainId: chain?.id});
+  const { data } = useFeeData({ chainId: chain?.id })
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const gasPrice = Math.round(Number(data?.formatted.gasPrice)/1e9)
-  const fastGasPrice = Math.round(Number(data?.formatted.maxFeePerGas)/1e9)
+  const gasPrice = Math.round(Number(data?.formatted.gasPrice) / 1e9)
+  const fastGasPrice = Math.round(Number(data?.formatted.maxFeePerGas) / 1e9)
   console.log(data)
   if (!data) return null
 
   return (
     <>
-      <Box className={className} onClick={onOpen} _hover={{ cursor: 'pointer' }} display="flex" flexDirection="row" gap={2} justifyItems="center">
+      <Button
+        onClick={onOpen}
+        display="flex"
+        variant={"ghost"}
+        flexDirection="row"
+        gap={2}
+        p={2}
+        justifyItems="center">
         <FaGasPump />
-        <Text fontSize="xs" fontWeight={"bold"}>{gasPrice}</Text>
-      </Box>
+        <Text fontSize="xs" fontWeight={'bold'}>
+          {gasPrice}
+        </Text>
+      </Button>
 
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
@@ -45,8 +60,23 @@ export function GasFee(props: Props) {
           <ModalHeader>Gas Fee</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Flex fontWeight={'bold'} alignItems={'center'} gap={2} p={4}><FaMotorcycle size={'25px'} />Minimum Fee<Spacer/>{gasPrice} GWEI</Flex>
-            <Flex fontWeight={'bold'} alignItems={'center'} gap={2} p={4} borderTop={'solid 1px #cccccc30'}><FaSpaceShuttle size={'25px'}/>Fast<Spacer/>{fastGasPrice} GWEI</Flex>
+            <Flex fontWeight={'bold'} alignItems={'center'} gap={2} p={4}>
+              <FaMotorcycle size={'25px'} />
+              Minimum Fee
+              <Spacer />
+              {gasPrice} GWEI
+            </Flex>
+            <Flex
+              fontWeight={'bold'}
+              alignItems={'center'}
+              gap={2}
+              p={4}
+              borderTop={'solid 1px #cccccc30'}>
+              <FaSpaceShuttle size={'25px'} />
+              Fast
+              <Spacer />
+              {fastGasPrice} GWEI
+            </Flex>
           </ModalBody>
           <ModalFooter>
             <LinkComponent href="https://www.bitcoin.com/get-started/what-is-ETH-gas-and-how-do-fees-work-in-ethereum/">
