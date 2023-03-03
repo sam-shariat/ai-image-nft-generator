@@ -13,8 +13,8 @@ export default function Home() {
       <Head />
       <main>
           <Flex flexDirection="column" alignItems={'center'} width={'100%'}>
-            <Heading p={3} as="h2" textTransform={'uppercase'} textAlign="center">
-              Create And Mint AI Generated Art In A Minute
+            <Heading p={3} as="h2" textAlign="center">
+              Mint AI Generated NFTs In A Minute
             </Heading>
             <Text p={4} textAlign="center" backgroundColor={'blackAlpha.500'} borderRadius={10}>
               <strong>

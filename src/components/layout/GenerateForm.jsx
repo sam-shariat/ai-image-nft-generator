@@ -51,8 +51,8 @@ export default function GenerateForm() {
         )}
         {loading && (
           <SimpleGrid columns={[1, 2]} gap={3} width="100%" maxWidth={800}>
-            <Skeleton height="300px" isLoaded={!loading} width="100%" />
-            <Skeleton height="300px" isLoaded={!loading} width="100%" />
+            <Skeleton height="300px" isLoaded={!loading} width="100%" borderRadius={10} />
+            <Skeleton height="300px" isLoaded={!loading} width="100%" borderRadius={10}/>
           </SimpleGrid>
         )}
       </Flex>
