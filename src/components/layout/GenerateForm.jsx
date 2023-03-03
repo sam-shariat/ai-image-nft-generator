@@ -2,6 +2,7 @@ import { Box, Button, Flex, Img, Select, SimpleGrid, Skeleton, Textarea } from '
 import { Mint } from 'components/layout/Mint'
 import { useCreateImage } from 'hooks/useCreateImage'
 import { useState } from 'react'
+import { STYLE_OPTIONS } from 'utils/config'
 
 export default function GenerateForm() {
   const [text, setText] = useState('')
@@ -18,20 +19,14 @@ export default function GenerateForm() {
         <Textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder="e.g. A Yogi dancing estaticly in Himalaya mountain range"
+          placeholder="e.g. A Yogi dancing estaticly in Himalaya mountain"
           size="lg"
           rows={2}
           width={'100%'}
         />
         <Box display={'flex'} flexDirection="column" gap={2}>
           <Select placeholder="Style" size="lg" onChange={(e) => setStyle(e.currentTarget.value)}>
-            <option value="Digital Art">Digital Art</option>
-            <option value="3D Render">3D Render</option>
-            <option value="Pixel Art">Pixel Art</option>
-            <option value="Oil Painting">Oil Painting</option>
-            <option value="Black and White Drawing">Black and White Drawing</option>
-            <option value="Illustration">Illustration</option>
-            <option value="Van Gogh Style">Van Gogh Style</option>
+            {STYLE_OPTIONS.map((style_option)=> <option value={style_option.value}>{style_option.label}</option>)}
           </Select>
           <Button
             colorScheme="teal"

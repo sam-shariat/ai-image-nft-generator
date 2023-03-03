@@ -13,28 +13,28 @@ export default function Home() {
       <Head />
       <main>
           <Flex flexDirection="column" alignItems={'center'} width={'100%'}>
-            <Heading p={3} as="h2" textTransform={'uppercase'}>
+            <Heading p={3} as="h2" textTransform={'uppercase'} textAlign="center">
               Create And Mint AI Generated Art In A Minute
             </Heading>
-            <Text py={2}>
+            <Text p={4} textAlign="center" backgroundColor={'blackAlpha.500'} borderRadius={10}>
               <strong>
-                <u>Describe</u>
+                Describe
               </strong>{' '}
               Your Image,{' '}
               <strong>
-                <u>Select</u>
+                Select
               </strong>{' '}
               The Style, Click{' '}
               <strong>
-                <u>GENERATE</u>
+                GENERATE
               </strong>
               , Connect Your{' '}
               <strong>
-                <u>Wallet</u>
+                Wallet
               </strong>
               , <strong>Mint</strong>,{' '}
               <strong>
-                <u>Done!</u>
+                Done!
               </strong>
             </Text>
           </Flex>

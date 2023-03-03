@@ -1,6 +1,38 @@
 import { ThemingProps } from '@chakra-ui/react'
 import { goerli, sepolia, polygon, optimism, arbitrum, polygonMumbai } from '@wagmi/chains'
 
+type StyleOption = {
+  value: string;
+  label: string;
+};
+
+export const STYLE_OPTIONS: StyleOption[] = [
+  { value: "realistic", label: "Realistic" },
+  { value: "digital art", label: "Digital Art" },
+  { value: "3d render", label: "3D Render" },
+  { value: "pixel art", label: "Pixel Art" },
+  { value: "black and white", label: "Black and White" },
+  { value: "abstract", label: "Abstract" },
+  { value: "cartoon", label: "Cartoon" },
+  { value: "surreal", label: "Surreal" },
+  { value: "fantasy", label: "Fantasy" },
+  { value: "minimalist", label: "Minimalist" },
+  { value: "pop-art", label: "Pop Art" },
+  { value: "impressionist", label: "Impressionist" },
+  { value: "expressionist", label: "Expressionist" },
+  { value: "cubist", label: "Cubist" },
+  { value: "futuristic", label: "Futuristic" },
+  { value: "vintage", label: "Vintage" },
+  { value: "gothic", label: "Gothic" },
+  { value: "steampunk", label: "Steampunk" },
+  { value: "cyberpunk", label: "Cyberpunk" },
+  { value: "romantic", label: "Romantic" },
+  { value: "naturalistic", label: "Naturalistic" },
+  { value: "whimsical", label: "Whimsical" },
+  { value: "geometric", label: "Geometric" },
+  { value: "retro", label: "Retro" },
+];
+
 export const SITE_NAME = 'AI NFT Generator'
 export const SITE_NAME_MOBILE = 'AI NFT'
 export const COPYRIGHT = 'Developed by ❤️'
