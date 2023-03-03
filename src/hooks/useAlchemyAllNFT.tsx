@@ -33,7 +33,9 @@ export function useAlchemyAllNFT() {
         })
       }
     }
-    getNfts()
+    if(!state.data){
+      getNfts()
+    }
   },[])
   return state
 }
