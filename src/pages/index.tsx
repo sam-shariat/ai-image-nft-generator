@@ -13,7 +13,7 @@ export default function Home() {
       <Head />
       <main>
           <Flex flexDirection="column" alignItems={'center'} width={'100%'}>
-            <Heading py={2} as="h2" textTransform={'uppercase'}>
+            <Heading p={3} as="h2" textTransform={'uppercase'}>
               Create And Mint AI Generated Art In A Minute
             </Heading>
             <Text py={2}>

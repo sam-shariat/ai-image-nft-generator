@@ -3,7 +3,7 @@ import { useAlchemyAllNFT } from 'hooks/useAlchemyAllNFT'
 
 export default function NFTsByContract() {
   const { loading, data: nfts, error } = useAlchemyAllNFT()
-  console.log(nfts)
+  if(!nfts) return null
   return (
     <Flex pt={6} flexDirection="column" alignItems={'center'} width={'100%'} overflow="hidden">
       <Heading as="h6" size={'md'}>PREVIOUSLY GENERATED IMAGES</Heading>
