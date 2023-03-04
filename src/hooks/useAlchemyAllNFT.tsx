@@ -17,7 +17,7 @@ export function useAlchemyAllNFT() {
   })
   useEffect(() => {
     const getNfts = async () => {
-      const response = await alchemy.nft.getNftsForContract(contractAddress[5],{omitMetadata:false})
+      const response = await alchemy.nft.getNftsForContract(contractAddress[5],{omitMetadata:false,pageSize:10})
       if (response.nfts) {
         setState({
           loading: false,

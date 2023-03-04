@@ -152,12 +152,14 @@ export function Mint(props: Props) {
                 </Flex>
                 <Input
                   placeholder="Name"
+                  disabled={mintStatus !== 'OPEN'}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   size="lg"
                 />
                 <Textarea
                   placeholder={`Description ( e.g. ${text} )`}
+                  disabled={mintStatus !== 'OPEN'}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   size="lg"
