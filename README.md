@@ -5,7 +5,6 @@ A Next.js + Ethereum DApp That Generates Images Using OpenAI, Can Upload The Ima
 ![Screen](./screen.jpg)
 
 ### [Live Demo on Vercel](https://ai-image-nft-generator.vercel.app/)
-### [Live Demo on Github Pages](https://sam-shariat.github.io/ai-image-nft-generator/)
 
 ## Getting Started 👀
 
