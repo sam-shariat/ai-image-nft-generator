@@ -21,11 +21,12 @@ export default function GenerateForm() {
           onChange={(e) => setText(e.target.value)}
           placeholder="e.g. A Yogi dancing estaticly in Himalaya mountain"
           size="lg"
+          variant={'filled'} 
           rows={2}
           width={'100%'}
         />
         <Box display={'flex'} flexDirection="column" gap={2}>
-          <Select placeholder="Style" size="lg" onChange={(e) => setStyle(e.currentTarget.value)}>
+          <Select variant={'filled'} placeholder="Style" size="lg" onChange={(e) => setStyle(e.currentTarget.value)}>
             {STYLE_OPTIONS.map((style_option)=> <option value={style_option.value}>{style_option.label}</option>)}
           </Select>
           <Button

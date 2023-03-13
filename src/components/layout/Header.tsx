@@ -18,14 +18,14 @@ export function Header(props: Props) {
   return (
     <Flex as="header" className={className} bg={useColorModeValue('gray.100', 'gray.900')} px={5} py={2} mb={8} alignItems="center">
       <LinkComponent href="/">
-        <Heading as="h1" size="md">
+        <Heading as="h1" size="md" fontWeight={'black'}>
           {notMobile ? SITE_NAME : SITE_NAME_MOBILE}
         </Heading>
       </LinkComponent>
 
       <Spacer />
 
-      <Flex alignItems="center" gap={4}>
+      <Flex alignItems="center" gap={notMobile ? 4 : 2}>
         <GasFee />
         <ConnectKitButton showAvatar={notMobile} showBalance={notMobile}/>
         <ThemeSwitcher />
