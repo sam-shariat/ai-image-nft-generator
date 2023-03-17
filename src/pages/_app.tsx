@@ -5,7 +5,7 @@ import { ChakraProvider } from 'providers/Chakra'
 import { useIsMounted } from 'hooks/useIsMounted'
 import { Seo } from 'components/layout/Seo'
 import { Analytics } from '@vercel/analytics/react';
-
+import './styles.css'
 export default function App({ Component, pageProps }: AppProps) {
   const isMounted = useIsMounted()
 

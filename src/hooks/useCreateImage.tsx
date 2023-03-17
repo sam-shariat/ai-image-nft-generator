@@ -15,7 +15,7 @@ export function useCreateImage(text: string) {
     data: undefined,
   })
   const [prevText, setPrevText] = useState('')
-
+  
   useEffect(() => {
     const getImages = async () => {
       const response = await openai.createImage({
@@ -30,6 +30,7 @@ export function useCreateImage(text: string) {
           error: undefined,
           data: response.data,
         })
+
         setPrevText(text)
         return
       } else {
