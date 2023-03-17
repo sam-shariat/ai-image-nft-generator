@@ -9,13 +9,13 @@ export function BuyCreditButton() {
   const toast = useToast()
   const { chain } = useNetwork()
   const {switchNetwork} = useSwitchNetwork({
-    chainId: 137,
+    chainId: CREDITS_CHAIN,
   })
   const { config } = usePrepareSendTransaction({
     request: { to: CREDITS_WALLET, value: ethers.BigNumber.from(CREDITS_FEE) },
-    chainId: 137,
+    chainId: CREDITS_CHAIN,
   })
-  const { data, isLoading, isSuccess, sendTransaction } = useSendTransaction({
+  const { isLoading, sendTransaction } = useSendTransaction({
     ...config,
     onSuccess(data) {
       setGeneratedImages([])
@@ -38,8 +38,7 @@ export function BuyCreditButton() {
         <Button
           onClick={switchNetwork}
           size={'sm'}
-          variant={'outline'}
-          colorScheme="green">
+          variant={'outline'}>
           Change To Polygon
         </Button>
       ) : (
