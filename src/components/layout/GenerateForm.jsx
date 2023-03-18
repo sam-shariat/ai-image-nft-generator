@@ -38,7 +38,7 @@ export default function GenerateForm() {
       setGeneratedImages([
         ...preveiusGeneratedImages,
         images?.data
-          .map((image) => !preveiusGeneratedImages.includes(image.url) && image.url)
+          .map((image) => image.url)
           .toString(),
       ])
     }
@@ -119,7 +119,6 @@ export default function GenerateForm() {
           </Text>
         )}
         <Spacer />
-
         <BuyCreditButton />
       </Flex>
       <Drawer placement={'bottom'} onClose={onClose} isOpen={isOpen} size={'full'}>
