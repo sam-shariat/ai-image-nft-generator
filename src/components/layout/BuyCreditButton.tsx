@@ -5,7 +5,7 @@ import { CREDITS_CHAIN, CREDITS_FEE, CREDITS_WALLET } from 'utils/config'
 import { useSendTransaction, usePrepareSendTransaction, useNetwork, useSwitchNetwork, useSigner } from 'wagmi'
 
 export function BuyCreditButton() {
-  const [generatedImages, setGeneratedImages] = useLocalStorage('gimgs')
+  const [generatedImages, setGeneratedImages] = useLocalStorage('gimgs',[])
   const toast = useToast()
   const { chain } = useNetwork()
   const { data: signer } = useSigner()
@@ -42,7 +42,7 @@ export function BuyCreditButton() {
     <>
       {chain?.id !== CREDITS_CHAIN ? (
         <Button
-          onClick={switchNetwork}
+          onClick={()=> switchNetwork}
           size={'sm'}
           variant={'outline'}>
           Change To Polygon
