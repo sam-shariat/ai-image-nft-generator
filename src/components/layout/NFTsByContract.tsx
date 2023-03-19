@@ -59,7 +59,7 @@ export default function NFTsByContract() {
           </Swiper>
         )}
       </Box>
-      <Flex p={2} py={4}>
+      <Flex p={2}>
         <LinkComponent label={'AI Collection On Opensea'} href={`${OPENSEA_ASSET_URL[5]}/${filteredNfts[0].contract.address}`}>
           <Button variant={'outline'}>View Collection On Opensea</Button>
         </LinkComponent>
