@@ -2,13 +2,14 @@ import { Button, useToast } from '@chakra-ui/react'
 import { ethers } from 'ethers'
 import { useLocalStorage } from 'usehooks-ts'
 import { CREDITS_CHAIN, CREDITS_FEE, CREDITS_WALLET } from 'utils/config'
-import { useSendTransaction, usePrepareSendTransaction, useNetwork, useSwitchNetwork } from 'wagmi'
+import { useSendTransaction, usePrepareSendTransaction, useNetwork, useSwitchNetwork, useSigner } from 'wagmi'
 
 export function BuyCreditButton() {
   const [generatedImages, setGeneratedImages] = useLocalStorage('gimgs')
   const toast = useToast()
   const { chain } = useNetwork()
-  const {switchNetwork} = useSwitchNetwork({
+  const { data: signer } = useSigner()
+  const { switchNetwork } = useSwitchNetwork({
     chainId: CREDITS_CHAIN,
   })
   const { config } = usePrepareSendTransaction({
@@ -31,6 +32,11 @@ export function BuyCreditButton() {
       console.log(data)
     },
   })
+
+
+  if(!signer) {
+    return null
+  }
 
   return (
     <>

@@ -22,7 +22,7 @@ export function Logo(props:Props) {
     >
       <g fill="#333" className="iconlinesvg-g iconlinesvg">
         <g className="tp-name">
-          <g transform="translate(3 15)" className="">
+          <g transform="translate(3 15)">
             <path
               className="image-rect"
               fill="none"

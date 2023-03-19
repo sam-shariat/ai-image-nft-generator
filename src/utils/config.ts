@@ -41,13 +41,14 @@ export const SITE_DESCRIPTION =
 export const SITE_URL = 'https://nexth.vercel.app'
 
 export const THEME_INITIAL_COLOR = 'system'
-export const THEME_COLOR_SCHEME: ThemingProps['colorScheme'] = 'purple'
+export const THEME_COLOR_SCHEME: ThemingProps['colorScheme'] = 'blue'
 export const THEME_CONFIG = {
   initialColorMode: THEME_INITIAL_COLOR,
 }
 
 export const CREDITS_WALLET = '0xD2D12058B23B55AA01b271be16C4855CeFa001CE'
 export const CREDITS_FEE = "800000000000000000"
+export const CREDITS_FEE_STRING = "0.8 MATIC"
 export const CREDITS_CHAIN = 137
 
 export const NO_GENERATED_IMAGES = 1

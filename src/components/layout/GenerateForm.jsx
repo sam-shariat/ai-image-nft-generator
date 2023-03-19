@@ -16,7 +16,9 @@ import { useCreateImage } from 'hooks/useCreateImage'
 import { useLocalStorage } from 'hooks/useLocalStorage'
 import { useRef, useState, useEffect } from 'react'
 import { NO_FREE_GENERATED_IMAGES, STYLE_OPTIONS } from 'utils/config'
+import { useSigner } from 'wagmi'
 import { BuyCreditButton } from './BuyCreditButton'
+import { BuyCreditInfo } from './BuyCreditInfo'
 import { GeneratedImages } from './GeneratedImages'
 
 export default function GenerateForm() {
@@ -25,6 +27,7 @@ export default function GenerateForm() {
   const [generatedImages, setGeneratedImages] = useLocalStorage('gimgs', [])
   const [notMobile] = useMediaQuery('(min-width: 750px)')
   const toast = useToast()
+  const { data: signer } = useSigner()
   const [style, setStyle] = useState('')
   const [finalText, setFinalText] = useState('')
   const { loading, data: images, error } = useCreateImage(finalText)
@@ -37,9 +40,7 @@ export default function GenerateForm() {
 
       setGeneratedImages([
         ...preveiusGeneratedImages,
-        images?.data
-          .map((image) => image.url)
-          .toString(),
+        images?.data.map((image) => image.url).toString(),
       ])
     }
   }, [images])
@@ -103,7 +104,9 @@ export default function GenerateForm() {
             size="lg"
             onChange={(e) => setStyle(e.currentTarget.value)}>
             {STYLE_OPTIONS.map((style_option) => (
-              <option key={style_option.value} value={style_option.value}>{style_option.label}</option>
+              <option key={style_option.value} value={style_option.value}>
+                {style_option.label}
+              </option>
             ))}
           </Select>
           <Button size="lg" width={200} whiteSpace={'normal'} onClick={createImages}>
@@ -118,6 +121,7 @@ export default function GenerateForm() {
             left
           </Text>
         )}
+        {!signer && <BuyCreditInfo />}
         <Spacer />
         <BuyCreditButton />
       </Flex>
