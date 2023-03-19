@@ -8,16 +8,18 @@ interface Props {
   children: ReactNode
   isExternal?: boolean
   className?: string
+  label?: string
 }
 
 export function LinkComponent(props: Props) {
   const className = props.className ?? ''
+  const label = props.label ?? ''
   const isExternal = props.href.match(/^([a-z0-9]*:|.{0})\/\/.*$/) || props.isExternal
   const color = useColorModeValue(`${THEME_COLOR_SCHEME}.600`, `${THEME_COLOR_SCHEME}.400`)
 
   if (isExternal) {
     return (
-      <Link className={className} _hover={{ color: color }} href={props.href} target="_blank" rel="noopener noreferrer">
+      <Link aria-label={label} className={className} _hover={{ color: color }} href={props.href} target="_blank" rel="noopener noreferrer">
         {props.children}
       </Link>
     )

@@ -27,13 +27,13 @@ export function Footer(props: Props) {
       alignItems="center"
       py={3}>
       <Flex color="gray.500" gap={2} alignItems="center" mt={2}>
-        <LinkComponent href={GITHUB_URL}>
+        <LinkComponent href={GITHUB_URL} label={'Star On Github'}>
           <FaStar />
         </LinkComponent>
-        <LinkComponent href={`https://github.com/${SOCIAL_GITHUB}`}>
+        <LinkComponent href={`https://github.com/${SOCIAL_GITHUB}`} label={'Github Profile'}>
           <FaGithub />
         </LinkComponent>
-        <LinkComponent href={`https://twitter.com/${SOCIAL_TWITTER}`}>
+        <LinkComponent href={`https://twitter.com/${SOCIAL_TWITTER}`} label={'Twitter Profile'}>
           <FaTwitter />
         </LinkComponent>
         <Text>{COPYRIGHT}</Text>

@@ -79,7 +79,7 @@ export function GasFee() {
             </Flex>
           </ModalBody>
           <ModalFooter>
-            <LinkComponent href="https://www.bitcoin.com/get-started/what-is-ETH-gas-and-how-do-fees-work-in-ethereum/">
+            <LinkComponent label='More Details About Fees' href="https://www.bitcoin.com/get-started/what-is-ETH-gas-and-how-do-fees-work-in-ethereum/">
               <Button onClick={onClose}>More Details</Button>
             </LinkComponent>
           </ModalFooter>

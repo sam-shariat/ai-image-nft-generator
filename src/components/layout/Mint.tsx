@@ -122,7 +122,7 @@ export function Mint(props: Props) {
                 <Text
                   textTransform={'uppercase'}
                   fontWeight={'bold'}>{`${name} NFT Minted Succesfully.`}</Text>
-                <LinkComponent href={minted}>
+                <LinkComponent href={minted} label={`${name} | Ai Generated NFT on Opensea`}>
                   <Button >View On Opensea</Button>
                 </LinkComponent>
               </Flex>

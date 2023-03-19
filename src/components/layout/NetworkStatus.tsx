@@ -17,7 +17,7 @@ export function NetworkStatus() {
         {network.chain?.name ?? 'Ethereum'}
       </Badge>
       {explorerUrl && (
-        <LinkComponent href={explorerUrl}>
+        <LinkComponent href={explorerUrl} label={`${network.chain?.network} explorer`}>
           <Text fontSize="2xs"># {block.data}</Text>
         </LinkComponent>
       )}

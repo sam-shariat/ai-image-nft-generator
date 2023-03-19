@@ -103,7 +103,7 @@ export default function GenerateForm() {
             size="lg"
             onChange={(e) => setStyle(e.currentTarget.value)}>
             {STYLE_OPTIONS.map((style_option) => (
-              <option value={style_option.value}>{style_option.label}</option>
+              <option key={style_option.value} value={style_option.value}>{style_option.label}</option>
             ))}
           </Select>
           <Button size="lg" width={200} whiteSpace={'normal'} onClick={createImages}>

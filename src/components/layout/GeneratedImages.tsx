@@ -39,11 +39,12 @@ export function GeneratedImages({ text, loading, images, notMobile, onClose }: P
         <Flex pb={2} flexDirection="column" alignItems={'center'} width={'100%'}>
           {images &&
             images.map((image) => (
-              <Flex direction={notMobile ? 'row' : 'column'} alignItems="center" width={notMobile ? 'auto' : '100%'}>
-                <Img src={image.url} key={'image' + image.url} alt={text} borderRadius={10} />
-                <Flex direction={'column'} mt={2} p={notMobile ? 4 : 0} gap={2} width={'100%'}>
-                  <Mint imageUrl={String(image.url)} text={text} key={'mint' + image.url} />
+              <Flex key={'container-' + image.url} direction={notMobile ? 'row' : 'column'} alignItems="center" width={notMobile ? 'auto' : '100%'}>
+                <Img src={image.url} key={'image-' + image.url} alt={text} borderRadius={10} />
+                <Flex key={'buttons-' + image.url} direction={'column'} mt={2} p={notMobile ? 4 : 0} gap={2} width={'100%'}>
+                  <Mint imageUrl={String(image.url)} text={text} key={'mint-' + image.url} />
                   <Button
+                    key={'download-' + image.url}
                     colorScheme="green"
                     size="lg"
                     width={'100%'}
@@ -54,6 +55,7 @@ export function GeneratedImages({ text, loading, images, notMobile, onClose }: P
                     Download
                   </Button>
                   <Button
+                    key={'share-' + image.url}
                     colorScheme="twitter"
                     size="lg"
                     width={'100%'}
@@ -64,6 +66,7 @@ export function GeneratedImages({ text, loading, images, notMobile, onClose }: P
                     Share
                   </Button>
                   <Button
+                    key={'again-'+image.url}
                     colorScheme="gray"
                     size="lg"
                     width={'100%'}
