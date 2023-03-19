@@ -1,8 +1,7 @@
 import { SimpleGrid } from '@chakra-ui/react'
-import GenerateForm from 'components/layout/GenerateForm'
-import { Head } from 'components/layout/Head'
-import { LoadingSVG } from 'components/layout/LoadingSVG'
-import NFTsByContract from 'components/layout/NFTsByContract'
+import GenerateForm from 'components/Generation/GenerateForm'
+import { Head } from 'components/layout/Header/Head'
+import NFTsByContract from 'components/NFTSlider/NFTsByContract'
 
 export default function Home() {
   return (

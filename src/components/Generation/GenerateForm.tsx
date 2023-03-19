@@ -17,14 +17,14 @@ import { useLocalStorage } from 'hooks/useLocalStorage'
 import { useRef, useState, useEffect } from 'react'
 import { NO_FREE_GENERATED_IMAGES, STYLE_OPTIONS } from 'utils/config'
 import { useSigner } from 'wagmi'
-import { BuyCreditButton } from './BuyCreditButton'
-import { BuyCreditInfo } from './BuyCreditInfo'
+import { BuyCreditButton } from '../BuyCredit/BuyCreditButton'
+import { BuyCreditInfo } from '../BuyCredit/BuyCreditInfo'
 import { GeneratedImages } from './GeneratedImages'
 
 export default function GenerateForm() {
   const [text, setText] = useState('')
-  const textRef = useRef(null)
-  const [generatedImages, setGeneratedImages] = useLocalStorage('gimgs', [])
+  const textRef = useRef<HTMLTextAreaElement>(null)
+  const [generatedImages, setGeneratedImages] = useLocalStorage<string[]>('gimgs', [])
   const [notMobile] = useMediaQuery('(min-width: 750px)')
   const toast = useToast()
   const { data: signer } = useSigner()
@@ -40,7 +40,8 @@ export default function GenerateForm() {
 
       setGeneratedImages([
         ...preveiusGeneratedImages,
-        images?.data.map((image) => image.url).toString(),
+        images?.data.map((image) => image.url).toString()
+        
       ])
     }
   }, [images])
@@ -68,7 +69,9 @@ export default function GenerateForm() {
         variant: 'solid',
         position: 'top',
       })
-      textRef.current.focus()
+      if(textRef.current !== null){
+        textRef.current.focus()
+      }
       return
     }
     setFinalText(text + ' ' + style)

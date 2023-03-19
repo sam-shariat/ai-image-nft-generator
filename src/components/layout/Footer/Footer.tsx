@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Text } from '@chakra-ui/react'
 import { FaGithub, FaStar, FaTwitter } from 'react-icons/fa'
-import { LinkComponent } from './LinkComponent'
+import { LinkComponent } from '../../Generation/LinkComponent'
 import {
   COPYRIGHT,
   GITHUB_URL,

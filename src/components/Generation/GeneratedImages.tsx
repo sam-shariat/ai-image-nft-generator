@@ -8,16 +8,16 @@ import {
   Button,
 } from '@chakra-ui/react'
 const FileSaver = require('file-saver')
-import { shareImage } from 'hooks/shareImage'
 import { ImagesResponseDataInner } from 'openai'
-import { LoadingSVG } from './LoadingSVG'
-import { Mint } from './Mint'
+import { shareImage } from 'utils/shareImage'
+import { LoadingSVG } from '../layout/LoadingSVG'
+import { Mint } from '../Mint/Mint'
 
 interface Props {
   notMobile: boolean
   text: string
   loading: boolean
-  images: ImagesResponseDataInner[]
+  images: ImagesResponseDataInner[] | undefined
   onClose: Function
 }
 

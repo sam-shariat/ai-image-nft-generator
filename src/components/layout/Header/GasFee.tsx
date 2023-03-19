@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react'
 import { FaGasPump, FaMotorcycle, FaSpaceShuttle } from 'react-icons/fa'
 import { useFeeData, useNetwork } from 'wagmi'
-import { LinkComponent } from './LinkComponent'
+import { LinkComponent } from '../../Generation/LinkComponent'
 
 
 /**

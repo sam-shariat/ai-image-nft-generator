@@ -1,7 +1,8 @@
 {
   "extends": "@tsconfig/next/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "downlevelIteration": true
   },
   "ts-node": {
     "require": ["tsconfig-paths/register"]
