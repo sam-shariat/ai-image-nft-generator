@@ -6,7 +6,7 @@ export function ThemeSwitcher() {
   const { colorMode, toggleColorMode } = useColorMode()
 
   return (
-    <Button aria-label='toggleColorModeButton' onClick={toggleColorMode} variant={'ghost'} px={1}>
+    <Button colorScheme='white' aria-label='toggleColorModeButton' onClick={toggleColorMode} variant={'ghost'} px={1}>
       {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
     </Button>
   )

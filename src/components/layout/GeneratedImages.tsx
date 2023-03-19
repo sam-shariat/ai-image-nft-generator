@@ -78,7 +78,7 @@ export function GeneratedImages({ text, loading, images, notMobile, onClose }: P
                 </Flex>
               </Flex>
             ))}
-          {loading && <LoadingSVG />}
+          {loading && <LoadingSVG width={notMobile ? 475 : 350}/>}
         </Flex>
       </DrawerBody>
     </DrawerContent>

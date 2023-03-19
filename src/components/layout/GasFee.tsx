@@ -42,6 +42,7 @@ export function GasFee() {
     <>
       <Button
         onClick={onOpen}
+        colorScheme='white'
         display="flex"
         variant={"ghost"}
         flexDirection="row"

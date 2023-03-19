@@ -1,6 +1,9 @@
 import * as React from "react"
-
-export function LoadingSVG() {
+interface Props {
+  width? :number
+  height? :number
+}
+export function LoadingSVG(props:Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11,11 +14,10 @@ export function LoadingSVG() {
         zIndex: 1,
         position: "relative"
       }}
-      width={471}
-      height={338}
       preserveAspectRatio="xMidYMid"
       viewBox="0 0 471 338"
       display="block"
+      {...props}
     >
       <defs>
         <linearGradient
