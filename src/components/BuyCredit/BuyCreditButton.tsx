@@ -45,7 +45,7 @@ export function BuyCreditButton() {
           onClick={()=> switchNetwork}
           size={'sm'}
           variant={'outline'}>
-          Change To Polygon
+          Switch Network To Polygon
         </Button>
       ) : (
         <Button
