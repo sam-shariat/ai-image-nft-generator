@@ -22,7 +22,7 @@ import { ethers } from 'ethers'
 import { contractAbi, contractAddress } from 'utils/contract'
 import { useAccount, useNetwork, useSigner } from 'wagmi'
 import { OPENSEA_ASSET_URL } from 'utils/config'
-import { LinkComponent } from '../Generation/LinkComponent'
+import { LinkComponent } from '../layout/Link/LinkComponent'
 
 interface Props {
   imageUrl: string

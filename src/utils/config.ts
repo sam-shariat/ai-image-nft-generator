@@ -1,5 +1,6 @@
 import { ThemingProps } from '@chakra-ui/react'
 import { goerli, sepolia, polygon, optimism, arbitrum, polygonMumbai } from '@wagmi/chains'
+import { atomWithStorage } from 'jotai/utils'
 
 type StyleOption = {
   value: string;
@@ -81,3 +82,5 @@ export const SERVER_SESSION_SETTINGS = {
     secure: process.env.NODE_ENV === 'production',
   },
 }
+
+export const apiAtom = atomWithStorage('openaiapi','');

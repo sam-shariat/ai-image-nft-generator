@@ -13,74 +13,92 @@ import {
   Spacer,
 } from '@chakra-ui/react'
 import { useCreateImage } from 'hooks/useCreateImage'
-import { useLocalStorage } from 'hooks/useLocalStorage'
 import { useRef, useState, useEffect } from 'react'
-import { NO_FREE_GENERATED_IMAGES, STYLE_OPTIONS } from 'utils/config'
-import { useSigner } from 'wagmi'
-import { BuyCreditButton } from '../BuyCredit/BuyCreditButton'
-import { BuyCreditInfo } from '../BuyCredit/BuyCreditInfo'
+import { STYLE_OPTIONS } from 'utils/config'
+import { CreditInfo } from '../BuyCredit/CreditInfo'
 import { GeneratedImages } from './GeneratedImages'
+import ApiKeyInput from 'components/BuyCredit/ApiKeyInput'
+import { apiAtom } from 'utils/config'
+import { useAtomValue } from 'jotai'
 
 export default function GenerateForm() {
+  const apikey = useAtomValue(apiAtom)
   const [text, setText] = useState('')
   const textRef = useRef<HTMLTextAreaElement>(null)
-  const [generatedImages, setGeneratedImages] = useLocalStorage<string[]>('gimgs', [])
   const [notMobile] = useMediaQuery('(min-width: 750px)')
   const toast = useToast()
-  const { data: signer } = useSigner()
   const [style, setStyle] = useState('')
   const [finalText, setFinalText] = useState('')
   const { loading, data: images, error } = useCreateImage(finalText)
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  useEffect(() => {
-    if (images !== undefined) {
-      const preveiusGeneratedImages = generatedImages ? new Set(generatedImages) : []
-      console.log(preveiusGeneratedImages)
-
-      setGeneratedImages([
-        ...preveiusGeneratedImages,
-        images?.data.map((image) => image.url).toString()
-        
-      ])
-    }
-  }, [images])
-
   async function createImages() {
-    if (generatedImages && generatedImages.length >= NO_FREE_GENERATED_IMAGES) {
-      toast({
-        title: 'Out of credits',
-        status: 'info',
-        description: `You have used ${NO_FREE_GENERATED_IMAGES} free credits today. if you need more, please recharge $1 to get 10 more`,
-        duration: 8000,
-        isClosable: true,
-        variant: 'solid',
-        position: 'top',
-      })
-      return
-    }
     if (text.length < 3) {
       toast({
         title: 'Missing a description',
         status: 'info',
         description: `Please enter a description of the image you want to generate. just imagine and type ... `,
-        duration: 8000,
+        duration: 4000,
         isClosable: true,
         variant: 'solid',
         position: 'top',
       })
-      if(textRef.current !== null){
+      if (textRef.current !== null) {
         textRef.current.focus()
       }
       return
     }
-    setFinalText(text + ' ' + style)
+    setFinalText(text + ' ' + style + ' APIKEY' + apikey)
     onOpen()
   }
+
+  useEffect(() => {
+    if (error && error.includes('code 400')) {
+      toast({
+        title: 'Out of credits',
+        status: 'info',
+        description: `There are not enough credits in the OpenAI api key, Please enter a new one or recharge your account on OpenAI`,
+        duration: 4000,
+        isClosable: true,
+        variant: 'solid',
+        position: 'top',
+      })
+      onClose()
+      return
+    }
+
+    if (error && error.includes('code 401')) {
+      toast({
+        title: 'Wrong API Key',
+        status: 'warning',
+        description: `Your OpenAI API Key is not correct, Please enter a correct one that begins with sk-... `,
+        duration: 4000,
+        isClosable: true,
+        variant: 'solid',
+        position: 'top',
+      })
+      onClose()
+      return
+    }
+
+    if (error && error.includes('NoKey')) {
+      toast({
+        title: 'Open AI Api Key is Requiered',
+        status: 'warning',
+        description: `Please Enter your OpenAI API Key, You can get a free one on platform.openai.com if you don't already have one.`,
+        duration: 4000,
+        isClosable: true,
+        variant: 'solid',
+        position: 'top',
+      })
+      onClose()
+      return
+    }
+  }, [error])
   return (
     <Flex p={notMobile ? 4 : 0} flexDirection="column" alignItems={'center'} width={'100%'}>
       <Flex px={1} py={3} flexDirection="column" alignItems={'center'} width={'100%'}>
-        <Heading py={4} as="h2" fontWeight={'black'}>
+        <Heading pb={4} as="h2" fontWeight={'black'}>
           Mint AI Generated NFTs In Seconds
         </Heading>
         <Text p={3} backgroundColor={'blackAlpha.300'} borderRadius={10} fontWeight="light">
@@ -117,16 +135,10 @@ export default function GenerateForm() {
           </Button>
         </Box>
       </Flex>
-      <Flex py={2} px={1} width="100%" maxWidth={800} direction="row" alignItems={'center'}>
-        {generatedImages && (
-          <Text fontWeight="light">
-            {NO_FREE_GENERATED_IMAGES - generatedImages.length}/{NO_FREE_GENERATED_IMAGES} Credits
-            left
-          </Text>
-        )}
-        {!signer && <BuyCreditInfo />}
+      <Flex gap={1} py={2} px={1} width="100%" maxWidth={800} direction="row" alignItems={'center'}>
+        <CreditInfo />
         <Spacer />
-        <BuyCreditButton />
+        <ApiKeyInput />
       </Flex>
       <Drawer placement={'bottom'} onClose={onClose} isOpen={isOpen} size={'full'}>
         <GeneratedImages

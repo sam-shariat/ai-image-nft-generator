@@ -23,7 +23,7 @@ export function BuyCreditButton() {
       toast({
         title: '3 Credits Added',
         status: 'success',
-        description: `Payment Succesfull. Tx Hash: ${data.hash}`,
+        description: `Payment Succesfull. Please Refresh the Website. Tx Hash: ${data.hash}`,
         duration: 8000,
         isClosable: true,
         variant: 'solid',
@@ -45,7 +45,7 @@ export function BuyCreditButton() {
           onClick={()=> switchNetwork}
           size={'sm'}
           variant={'outline'}>
-          Switch Network To Polygon
+          Switch To Polygon
         </Button>
       ) : (
         <Button

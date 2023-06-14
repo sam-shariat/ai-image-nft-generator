@@ -1,12 +1,23 @@
-import { Box, Button, Flex, Text, useMediaQuery, useColorModeValue } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Flex,
+  Text,
+  useMediaQuery,
+  useColorModeValue,
+  Spacer,
+  Tooltip,
+} from '@chakra-ui/react'
 import { useAlchemyAllNFT } from 'hooks/useAlchemyAllNFT'
 import { OPENSEA_ASSET_URL } from 'utils/config'
-import { LinkComponent } from '../Generation/LinkComponent'
+import { LinkComponent } from '../layout/Link/LinkComponent'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCards } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/effect-cards'
 import Image from 'next/image'
+import { contractAddress } from 'utils/contract'
+import { ChainIcon } from 'connectkit'
 
 export default function NFTsByContract() {
   const { loading, data: nfts, error } = useAlchemyAllNFT()
@@ -31,14 +42,22 @@ export default function NFTsByContract() {
             {filteredNfts.map((nft) => (
               <SwiperSlide key={`swiper-${nft.contract}-${nft.tokenId}`}>
                 <Flex key={`swiper-div-${nft.contract}-${nft.tokenId}`} direction={'column'}>
-                  <Box key={`swiper-box-${nft.contract}-${nft.tokenId}`}
+                  <Box
+                    key={`swiper-box-${nft.contract}-${nft.tokenId}`}
                     borderColor={useColorModeValue('gray.900', 'gray.100')}
                     border="2px solid"
                     position={'relative'}
                     borderRadius={5}
                     width={notMobile ? 356 : 272}
                     height={notMobile ? 356 : 272}>
-                    <Image key={`image-${nft.contract}-${nft.tokenId}`} style={{borderRadius:5}} alt={nft.title} fill sizes="100vw" src={nft.media[0].gateway} />
+                    <Image
+                      key={`image-${nft.contract}-${nft.tokenId}`}
+                      style={{ borderRadius: 5 }}
+                      alt={nft.title}
+                      fill
+                      sizes="100vw"
+                      src={nft.media[0].gateway}
+                    />
                   </Box>
                   <Text
                     key={`title-${nft.contract}-${nft.tokenId}`}
@@ -59,10 +78,26 @@ export default function NFTsByContract() {
           </Swiper>
         )}
       </Box>
-      <Flex p={2}>
-        <LinkComponent label={'AI Collection On Opensea'} href={`${OPENSEA_ASSET_URL[5]}/${filteredNfts[0].contract.address}`}>
-          <Button variant={'outline'}>View Collection On Opensea</Button>
-        </LinkComponent>
+      <Flex p={2} alignItems={'center'} justifyContent={'center'} width={'90%'} gap={2}>
+        
+        {[5, 137, 42161, 10, 11155111, 80001].map((item) => (
+          <LinkComponent
+            label={`AI Collection On Opensea ${OPENSEA_ASSET_URL[item].slice(
+              OPENSEA_ASSET_URL[item].lastIndexOf('/') + 1
+            )}`}
+            href={`${OPENSEA_ASSET_URL[item]}/${contractAddress[item]}`}>
+            <Tooltip
+              hasArrow
+              placement="bottom"
+              label={`Collection On Opensea ${OPENSEA_ASSET_URL[item].slice(
+                OPENSEA_ASSET_URL[item].lastIndexOf('/') + 1
+              )}`}>
+              <Button variant={'ghost'} px={0}>
+                <ChainIcon id={item} />
+              </Button>
+            </Tooltip>
+          </LinkComponent>
+        ))}
       </Flex>
     </Flex>
   )
