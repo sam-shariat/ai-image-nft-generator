@@ -13,6 +13,18 @@ const nextConfig = withPWA({
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'ipfs.io',
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'oaidalleapiprodscus.blob.core.windows.net',
+        port: '',
+        pathname: '/**'
+      }
     ]
   },
   webpack: (config, { isServer }) => {

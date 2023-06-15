@@ -1,5 +1,7 @@
 import { ThemingProps } from '@chakra-ui/react'
 import { goerli, sepolia, polygon, optimism, arbitrum, polygonMumbai } from '@wagmi/chains'
+import { Network } from 'alchemy-sdk';
+import { atom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils'
 
 type StyleOption = {
@@ -60,9 +62,21 @@ export const SOCIAL_GITHUB = 'sam-shariat'
 export const GITHUB_URL = 'https://github.com/sam-shariat/ai-image-nft-generator'
 
 export const ETH_CHAINS = [polygon, arbitrum, optimism, goerli, sepolia, polygonMumbai]
-
 interface OPENSEA_ASSET_URLs {
   [index: number]: string;
+}
+
+interface IETH_CHAIN_NAMES {
+  [index: number]: Network;
+}
+
+export const ETH_CHAIN_NAMES:IETH_CHAIN_NAMES = {
+  5: Network.ETH_GOERLI,
+  80001: Network.MATIC_MUMBAI,
+  137: Network.MATIC_MAINNET,
+  42161: Network.ARB_MAINNET,
+  10: Network.OPT_MAINNET,
+  11155111: Network.ETH_GOERLI,
 }
 
 export const OPENSEA_ASSET_URL:OPENSEA_ASSET_URLs = {
@@ -84,3 +98,4 @@ export const SERVER_SESSION_SETTINGS = {
 }
 
 export const apiAtom = atomWithStorage('openaiapi','');
+export const networkAtom = atom({network:Network.ETH_GOERLI,id:5});

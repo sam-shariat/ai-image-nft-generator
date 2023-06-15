@@ -7,6 +7,7 @@ import { ConnectKitButton } from 'connectkit'
 import { GasFee } from './GasFee'
 import { useNetwork } from 'wagmi'
 import { Logo } from './Logo'
+import { GithubStarButton } from './GithubStarButton'
 
 interface Props {
   className?: string
@@ -30,6 +31,7 @@ export function Header(props: Props) {
       <Flex alignItems="center" gap={notMobile ? 3 : 2}>
         <GasFee />
         <ConnectKitButton showAvatar={notMobile && chain?.name === "ethereum"} showBalance={notMobile}/>
+        {notMobile && <GithubStarButton label='Star On Github' /> }
         <ThemeSwitcher />
       </Flex>
     </Flex>

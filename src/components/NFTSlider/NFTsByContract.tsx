@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from '@chakra-ui/react'
 import { useAlchemyAllNFT } from 'hooks/useAlchemyAllNFT'
-import { OPENSEA_ASSET_URL } from 'utils/config'
+import { ETH_CHAIN_NAMES, OPENSEA_ASSET_URL, networkAtom } from 'utils/config'
 import { LinkComponent } from '../layout/Link/LinkComponent'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCards } from 'swiper'
@@ -18,10 +18,13 @@ import 'swiper/css/effect-cards'
 import Image from 'next/image'
 import { contractAddress } from 'utils/contract'
 import { ChainIcon } from 'connectkit'
+import { useAtom } from 'jotai'
+import { FaExternalLinkAlt } from 'react-icons/fa'
 
 export default function NFTsByContract() {
   const { loading, data: nfts, error } = useAlchemyAllNFT()
   const [notMobile] = useMediaQuery('(min-width: 750px)')
+  const [nftNetwork,setNftNetwork] = useAtom(networkAtom);
 
   if (!nfts) return null
   const filteredNfts = [...nfts?.nfts].reverse()
@@ -80,24 +83,29 @@ export default function NFTsByContract() {
       </Box>
       <Flex p={2} alignItems={'center'} justifyContent={'center'} width={'90%'} gap={2}>
         
-        {[5, 137, 42161, 10, 11155111, 80001].map((item) => (
-          <LinkComponent
-            label={`AI Collection On Opensea ${OPENSEA_ASSET_URL[item].slice(
-              OPENSEA_ASSET_URL[item].lastIndexOf('/') + 1
-            )}`}
-            href={`${OPENSEA_ASSET_URL[item]}/${contractAddress[item]}`}>
+        {[5, 137, 42161, 10, 80001].map((item) => (
+          
             <Tooltip
               hasArrow
               placement="bottom"
-              label={`Collection On Opensea ${OPENSEA_ASSET_URL[item].slice(
+              label={`Collection On ${OPENSEA_ASSET_URL[item].slice(
                 OPENSEA_ASSET_URL[item].lastIndexOf('/') + 1
               )}`}>
-              <Button variant={'ghost'} px={0}>
+              <Button variant={nftNetwork.id ===  item ? 'outline' : 'ghost'} px={0} onClick={()=> setNftNetwork({network:ETH_CHAIN_NAMES[item],id:item})}>
                 <ChainIcon id={item} />
               </Button>
             </Tooltip>
-          </LinkComponent>
         ))}
+        <LinkComponent
+            label={`AI Collection On Opensea ${OPENSEA_ASSET_URL[nftNetwork.id].slice(
+              OPENSEA_ASSET_URL[nftNetwork.id].lastIndexOf('/') + 1
+            )}`}
+            href={`${OPENSEA_ASSET_URL[nftNetwork.id]}/${contractAddress[nftNetwork.id]}`}>
+              <Button variant={'ghost'} colorScheme='facebook' gap={2}>
+              <FaExternalLinkAlt />
+              Opensea
+              </Button>
+            </LinkComponent>
       </Flex>
     </Flex>
   )
