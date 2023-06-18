@@ -41,7 +41,7 @@ export const SITE_NAME_MOBILE = 'AI NFT'
 export const COPYRIGHT = '@SamyWalters 2023'
 export const SITE_DESCRIPTION =
   'A Decentralized Application (DApp) that utilizes Natural Language Processing (NLP) to generate images from text input, and then mints the generated image as an ERC721 token on the blockchain.'
-export const SITE_URL = 'https://nexth.vercel.app'
+export const SITE_URL = 'https://ai-image-nft-generator.vercel.app/'
 
 export const THEME_INITIAL_COLOR = 'dark'
 export const THEME_COLOR_SCHEME: ThemingProps['colorScheme'] = 'blue'

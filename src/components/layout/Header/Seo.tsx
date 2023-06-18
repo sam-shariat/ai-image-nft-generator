@@ -3,7 +3,7 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, SOCIAL_TWITTER } from 'utils/con
 import { DefaultSeo } from 'next-seo'
 
 export function Seo() {
-  const origin = typeof window !== 'undefined' && window.location.origin ? window.location.origin : SITE_URL
+  const origin = SITE_URL;
 
   return (
     <DefaultSeo
