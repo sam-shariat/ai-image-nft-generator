@@ -12,7 +12,7 @@ export function Seo() {
       titleTemplate={`%s | ${SITE_NAME}`}
       description={SITE_DESCRIPTION}
       defaultOpenGraphImageWidth={1200}
-      defaultOpenGraphImageHeight={630}
+      defaultOpenGraphImageHeight={550}
       openGraph={{
         type: 'website',
         siteName: SITE_NAME,
